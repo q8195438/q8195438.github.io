@@ -166,6 +166,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="w-sort" class="article article-type-w  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/28/sort/">快速排序简析</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/28/sort/" class="archive-article-date">
+  	<time datetime="2018-08-28T04:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="高快省的排序算法"><a href="#高快省的排序算法" class="headerlink" title="高快省的排序算法"></a><strong>高快省的排序算法</strong></h4><p>有没有既不浪费空间又可以快一点的排序算法呢？那就是“快速排序”啦！光听这个名字是不是就觉得很高端呢。</p>
+        
+          <a class="article-more-a" href="/2018/08/28/sort/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/28/sort/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="w-python为什么慢" class="article article-type-w  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -187,43 +263,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="一、动态类型导致运行速度慢，在北邮人论坛里面的这篇帖子中有较为详细的解释，原文中有举例说明，本文没有例子讲解只是提取了原理来讲解，内容主要如下："><a href="#一、动态类型导致运行速度慢，在北邮人论坛里面的这篇帖子中有较为详细的解释，原文中有举例说明，本文没有例子讲解只是提取了原理来讲解，内容主要如下：" class="headerlink" title="一、动态类型导致运行速度慢，在北邮人论坛里面的这篇帖子中有较为详细的解释，原文中有举例说明，本文没有例子讲解只是提取了原理来讲解，内容主要如下："></a>一、动态类型导致运行速度慢，在北邮人论坛里面的这篇帖子中有较为详细的解释，原文中有举例说明，本文没有例子讲解只是提取了原理来讲解，内容主要如下：</h3><p>a、动态语言中的执行过程</p>
-<p>　　Python等动态类型语言之所以慢，就是因为每一个简单的操作都需要大量的指令才能完成。他们的虚拟机拥有很强的优化器，却是为静态语言设计的。对Python几乎没有效果。举一个例子。对于整数加法，C语言很简单，只要一个机器指令ADD就可以了，最多不过再加一些内存读写。但是，对于Python来说，a+b这样的简单二元运算，可就真的很麻烦了。Python是动态语言，变量只是对象的引用，变量a和b本身都没有类型，而它们的值有类型。所以，在相“加”之前，必须先判断类型。</p>
-<ol>
-<li>判断a是否为整数，否则跳到第9步</li>
-<li>判断b是否为整数，否则跳到第9步</li>
-<li>将a指向的对象中的整数值读出来</li>
-<li>将b指向的对象中的整数值读出来</li>
-<li>进行整数相加</li>
-<li>生成一个新整数对象</li>
-<li>将运算结果存进去</li>
-<li>返回这个对象，完成！</li>
-<li>判断a是否为字符串，否则跳到第13步</li>
-<li>判断b是否为字符串，否则跳到第13步</li>
-<li>进行字符串串接操作，生成一个新字符串对象</li>
-<li>返回这个对象，完成！</li>
-<li>从a的字典里取出<strong>add</strong>方法</li>
-<li>调用这个方法，将a和b作为参数传入</li>
-<li>返回上述方法的返回值。<br>这还只是简化版的，实际中还要考虑溢出问题等。</li>
-</ol>
-<p>b、Jpython</p>
-<p>　　Jython能做的只是把Python代码转换成JVM的代码，而Python中那些判断a,b是否为整数或者字符串的操作是不能省略的。毕竟Python是允许你写1+2同时也可以”hello”+”world”。这种运行时的类型检查并不能简单地通过编译而去除。</p>
-<p>c、谷歌的Unladen Swallow项目</p>
-<p>　　它是一个很有雄心的项目，但是，在项目开始一年后就流产了。最后，加速效果也不过50%左右。它们使用的方法是朴素的“模板编译法”：看到Python的加法操作，就转换成一个C语言的函数调用，调用Python的PyNumber_Add函数。这个函数就是干类似上面一串的事。同样地，虽然去除了官方Python的解释器代价，但并没有消除运行时类型检查的代价。</p>
-<p>d、pypy为什么比较快和pypy的不足：</p>
-<p>　　PyPy可以将Python的速度加到C的一半左右。PyPy使用了一种技巧，就是“类型推导”（Type Inference）。PyPy的运行时编译器（Just-in-time compiler，或者称JIT Compiler）的工作方式是，只优化循环，因为大量的时间都是消耗在少数循环上。当运行时检测到某个循环运行的次数很多的时候，就开启一个“录像机”，录制这个循环执行一次中，执行的所有操作的轨迹。这样以“轨迹”为单位的编译方式叫Tracing JIT。当类型确定以后，其中涉及的数据都是整数，都可以直接对应机器指令进行执行。程序起码在这一部分已经由动态的代码变成像C一样的静态类型代码了，而且数据类型很接近机器。将这一段代码编译成机器码，效率就可以和C相比了。</p>
-<p>　　　注意到，这其实是一种“猜测”：优化器“猜想”每次执行循环for i in range(n)，i和n都是整数。这种猜测是可能出错的。万一程序员将一个字符串传入函数怎么办呢？所以，基于“猜测”（speculation）的优化必须考虑“猜错了”的情形。这就是优化过的代码的第1、3、11行的用途。1和3考虑万一i和n不是整数的情形，而15考虑了整数溢出的情况。在Python里，整数都是高精度整数，可以是任意大的，而不仅限于32位。（其实上述32位也只是假设，在64位机上，显然64位效率更高。）所以，如果猜错了（这种事经常会发生），就必须停止执行这段“优化”过的代码，而是老老实实回到解释器中，像传统的Python一样执行。<br>可以看出，带有类型推导功能的Tracing JIT编译器可以大幅度加快动态语言的速度。主要原因是：</p>
-<ol>
-<li>在运行时得到了变量的类型，并通过“猜测”，将这些类型转换成接近机器的类型。</li>
-<li>将简化的操作编译成机器码，去除了解释器的代价。<br>目前，PyPy是一个很活跃的项目。但是，毕竟是一个研究型的项目，PyPy也有自己的不足。如和官方Python并不完全兼容；PyPy本身的可执行文件很大；并不是运行所有的程序都快——PyPy虽然JIT Compiler很快，但它的解释器速度不如官方的Python，对于无法通过优化加速的程序来说，PyPy就不快了。</li>
-</ol>
-<h3 id="二、python慢不仅是因为动态类型，甚至不是python慢的主要原因，在现实中，在C语言和Python在运行时的巨大的不同是由于数据结构和算法的不同。"><a href="#二、python慢不仅是因为动态类型，甚至不是python慢的主要原因，在现实中，在C语言和Python在运行时的巨大的不同是由于数据结构和算法的不同。" class="headerlink" title="二、python慢不仅是因为动态类型，甚至不是python慢的主要原因，在现实中，在C语言和Python在运行时的巨大的不同是由于数据结构和算法的不同。"></a>二、python慢不仅是因为动态类型，甚至不是python慢的主要原因，在现实中，在C语言和Python在运行时的巨大的不同是由于数据结构和算法的不同。</h3><p>用Python写不同的代码 </p>
-<p>让我们用一个实例来说明问题。一个Python程序员可能很喜欢用下面的例子表示一个平面上的点：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">point = &#123;<span class="string">'x'</span>: <span class="number">0</span>, <span class="string">'y'</span>: <span class="number">0</span>&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这种方法很易读，容易编码，形式很优雅。<br>另一个方面，一个C语言程序员可能使用结构体来表示平面上的点：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">struct Point &#123;</span><br><span class="line">   int x;</span><br><span class="line">   int y;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>尽管这种方法也和Python能一样的工作并且都是很优雅的，但这是完全不同的数据结构。这里我们告诉了编译器，我们有两个字段x和y。知道了这两个字段的类型，编译器将分配一块连续的内存来储存这两个数据。换一句话说，就像一个数组一样。任何时间，编译器都知道给定的x和y在哪里。我们可以很容易地访问这些数据，就像是访问某些常数据一样。<br>Python使用哈希散列的方法来解决类似的问题。所以编译器不能简单地分配连续内存存储x和y来处理这些问题。由于我们在其中任意的地方都可能出现这些键。如果我们想的话，我们也可能删除这些键。编译器必须要使用哈希函数来映射到你可能让他指向的任何存储单元。不用说，这些函数增加了处理时间。尽管也许减缓的很小，但是足可以拖慢你的代码，尤其是这种情况如果很多的时候。<br> 如果就是想将Python翻译成C语言的话，可能就像下面这样：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::hash_set point;</span><br><span class="line">point[“x”] = x</span><br><span class="line">point[“y”] = y</span><br></pre></td></tr></table></figure></p>
-<p>看这个代码片段，好像就是语言的设计者他们自己故意尽力使哈希表复杂，因此尽管是正确的，但没有人使用。由于这个原因，写C语言的人可能认为这是不可思议的，但为什么在Python就是可以接受的呢？<br>原因就是写Python代码的人的“dictionaries are lightweight objects”这种心态。看下面的代码，这在Python中最接近C语言结构体：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Point(object):</span><br><span class="line">     x, y = None, None</span><br><span class="line">     def __init__(self, x, y):</span><br><span class="line">          self.x, self.y = x, y</span><br></pre></td></tr></table></figure></p>
-<p>这对编译器是有用的，就像是C语言的结构体。例如第二行，我们明确告诉编译器但我们创造一个对象时我们总是至少需要两个数据段，我们希望编译器处理这个问题。<br>不幸的是这种标准的Python被叫做CPthon，不能总被使用。在我的机器上，下面的代码要执行186毫秒：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def sum_(points):</span><br><span class="line">    sum_x, sum_y = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> point in points:</span><br><span class="line">        sum_x += point[<span class="string">'x'</span>]</span><br><span class="line">        sum_y += point[<span class="string">'y'</span>]</span><br><span class="line">    <span class="keyword">return</span> sum_x, sum_y</span><br></pre></td></tr></table></figure></p>
-<p>在我的机器上，用point.x代替point[‘x’]会花费201毫秒。也就是说，会慢了8%。<br> 在CPthon中，point.x通常就是被处理成dict(point)[‘x’]。这意味着带着点的class仍然像以前一样使用字典（dictionary）的方法查找。这样的话，就很容易看出为什么directionary的方法被看为“轻量级的”。<br>一些Python写的代码就是为了效率而设计的，例如PyPy，能很快地执行。如果不使用Python而是使用PyPy，同样的代码片段执行时间分别是21.6和3.75毫秒。这种方法相比CPython在JIT-capable编译情况下结果都是令人满意的。换一句话说，PyPy能正确地使用数据结构。<br>我希望你再一次看这个最短时间3.75毫秒。这个数字表明我们能在一秒进行266000次运算，这些事来自Python的，其中有动态绑定，monkey-patching（在不改变源代码的情况下扩展或修改动态语言运行时代码的方法）等。所有的这些，都是在编码和实现中使用了更好的数据结构。下一次当你在用Python写一行代码时，想一想你在使用什么数据结构，显示的还是隐式的，考虑一下是否有更好的办法。这就是你用C语言写程序时考虑的，不是吗？<br>最后，我愿意相信这个文章是表明为什么Python是一个有前途的语言的一个清楚的例子（或者是类似的语言）。这表明了标准的Python实现，这里的CPython仅仅是作为一个参考，它从来就不是被设计用来更快地执行的。正如我们今天可以看到的，像PyPy一样的算法实现是可以优化你的代码到一个很好的长度。随着语言的自然发展，这些优化是可能的。我们仅仅用Python编程过23年，那么如果像C语言一样有42年的发展，Python会是什么样子呢？</p>
-
+<p>　　Python等动态类型语言之所以慢，就是因为每一个简单的操作都需要大量的指令才能完成。他们的虚拟机拥有很强的优化器，却是为静态语言设计的。对Python几乎没有效果。举一个例子。对于整数加法，C语言很简单，只要一个机器指令ADD就可以了，最多不过再加一些内存读写。但是，对于Python来说，a+b这样的简单二元运算，可就真的很麻烦了。Python是动态语言，变量只是对象的引用，变量a和b本身都没有类型，而它们的值有类型。所以，在相“加”之前，必须先判断类型。<br>
+        
+          <a class="article-more-a" href="/2018/08/27/python为什么慢/#more">more >></a>
+        
       
 
       
@@ -1071,11 +1114,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
