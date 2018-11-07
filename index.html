@@ -166,6 +166,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="w-快速幂" class="article article-type-w  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/07/快速幂/">快速幂算法简析</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/07/快速幂/" class="archive-article-date">
+  	<time datetime="2018-11-07T04:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>### </p>
+<p>快速幂的目的就是做到快速求幂，假设我们要求a^b,按照朴素算法就是把a连乘b次，这样一来时间复杂度是O(b)也即是O(n)级别，快速幂能做到O(logn)，快了好多好多。它的原理如下：</p>
+<p>　　假设我们要求a^b，那么其实b是可以拆成二进制的，该二进制数第i位的权为2^(i-1)，例如当b==11时，<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">11的二进制是1011，11 = 2³×1 + 2²×0 + 2¹×1 + 2º×1，因此，我们将a¹¹转化为</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```math</span><br><span class="line">a^&#123;11&#125; = a^&#123;(2^0)&#125;* a^&#123;(2^1)&#125; *a^&#123;(2^3)&#125;</span><br></pre></td></tr></table></figure></p>
+<p>看出来快的多了，原来算11次，现在算三次，但是这三项貌似不好求的样子….不急，下面会有详细解释。</p>
+<p>由于是二进制，很自然地想到用位运算这个强大的工具： &amp;  和 &gt;&gt; ，&amp;运算通常用于二进制取位操作，例如一个数 &amp; 1 的结果就是取二进制的最末位。还可以判断奇偶:x&amp;1== 0为偶，x&amp;1==1为奇。&gt;&gt;运算比较单纯,就是二进制去掉最后一位。<br>　　<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">　　int KsmPow(long long a,long long  b)</span><br><span class="line">　　&#123;</span><br><span class="line">    int ans=1;</span><br><span class="line">    while(b)</span><br><span class="line">    &#123;</span><br><span class="line">        if(b&amp;1)</span><br><span class="line">        　　ans*=a;</span><br><span class="line">        </span><br><span class="line">        a*=a;</span><br><span class="line">        b&gt;&gt;=1;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>代码很短，死记也可行，但最好还是理解一下吧，其实也很好理解，以b==11为例，b=&gt;1011,二进制从右向左算，但乘出来的顺序是<br><code>a^(2^0)*a^(2^1)*a^(2^3)</code>，是从左向右的。我们不断的让a*=a目的即是累乘，以便随时对ans做出贡献。</p>
+<p>其中要理解a*=a这一步：因为 a*a\==a^2，下一步再乘，就是a^2*a^2\==a^4，然后同理  a^4*a^4=a^8，由此可以做到a–&gt;a^2–&gt;a^4–&gt;a^8–&gt;a^16–&gt;a^32…….指数正是 2^i ，再看上面的例子，a¹¹= a1*a2*a8，这三项就可以完美解决了，快速幂就是这样。</p>
+<p>指数函数是爆炸增长的函数，所以很有可能会爆掉int的范围，根据题意选择 long long或者mod某个数。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/07/快速幂/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="w-sort" class="article article-type-w  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -951,76 +1032,10 @@
 
 
   
-    <article id="w-一道很有意思的面试题目" class="article article-type-w  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/18/一道很有意思的面试题目/">一道很有意思的面试题目</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/18/一道很有意思的面试题目/" class="archive-article-date">
-  	<time datetime="2017-07-18T14:49:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问:有一种玻璃杯质量确定但未知，需要检测。有一栋100层的大楼，该种玻璃杯从某一层楼扔下，刚好会碎。现给你两个杯子，问怎样检测出这个杯子的质量，即找到在哪一层楼刚好会碎？</p>
-<p>分析：</p>
-<p>首先理解题意，将这个杯子从某一层楼扔下，如果没碎，我还可以再利用它测试。如果碎了的话，就不能再继续用了。如果我从x楼扔下，没碎，在x+1楼扔下，碎掉了，即证明找到了x+1是刚好碎掉的楼层。问题的关键是，怎么快速找到这个楼层呢？这是一个查找问题。我们需要一个策略方法来快速地找到它，就看谁的方法比较优秀拉。而优秀的方法其评价标准显而易见：各种情况下都能快速地找到目标楼层。</p>
-<p>思考路径：</p>
-<p>如果只有一个杯子的话，应该怎么做呢？</p>
-<p>稍微想一下也可以知道，必定只能一层一层地扔，1楼没碎扔2楼，2楼没碎扔3楼，直到碎掉。</p>
-        
-          <a class="article-more-a" href="/2017/07/18/一道很有意思的面试题目/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/18/一道很有意思的面试题目/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -1114,11 +1129,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>

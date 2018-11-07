@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://tao.nodeforces.com/sort/7.jpg">
 <meta property="og:image" content="http://tao.nodeforces.com/sort/8.jpg">
 <meta property="og:image" content="http://tao.nodeforces.com/sort/9.jpg">
-<meta property="og:updated_time" content="2018-09-28T02:49:58.258Z">
+<meta property="og:updated_time" content="2018-09-28T02:54:28.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速排序简析">
 <meta name="twitter:description" content="高快省的排序算法有没有既不浪费空间又可以快一点的排序算法呢？那就是“快速排序”啦！光听这个名字是不是就觉得很高端呢。">
@@ -198,7 +198,7 @@
         <h4 id="高快省的排序算法"><a href="#高快省的排序算法" class="headerlink" title="高快省的排序算法"></a><strong>高快省的排序算法</strong></h4><p>有没有既不浪费空间又可以快一点的排序算法呢？那就是“快速排序”啦！光听这个名字是不是就觉得很高端呢。</p>
 <a id="more"></a>
 <p>假设我们现在对“6  1  2 7  9  3  4  5 10  8”这个10个数进行排序。首先在这个序列中随便找一个数作为<strong>基准数</strong>（不要被这个名词吓到了，就是一个用来参照的数，待会你就知道它用来做啥的了）。为了方便，就让第一个数6作为基准数吧。接下来，需要将这个序列中所有比基准数大的数放在6的右边，比基准数小的数放在6的左边，类似下面这种排列：</p>
-<p>3  1  2 5  4  <strong>++6++</strong>  9 7  10  8</p>
+<p>3  1  2 5  4  <strong>6</strong>  9 7  10  8</p>
 <p>在初始状态下，数字6在序列的第1位。我们的目标是将6挪到序列中间的某个位置，假设这个位置是k。现在就需要寻找这个k，并且以第k位为分界点，左边的数都小于等于6，右边的数都大于等于6。想一想，你有办法可以做到这点吗？</p>
 <h4 id="排序算法显神威"><a href="#排序算法显神威" class="headerlink" title="排序算法显神威"></a><strong>排序算法显神威</strong></h4><p>方法其实很简单：分别从初始序列“6  1  2 7  9  3  4  5 10  8”两端开始“探测”。先从<strong>右</strong>往<strong>左</strong>找一个小于6的数，再从<strong>左</strong>往<strong>右</strong>找一个大于6的数，然后交换他们。这里可以用两个变量i和j，分别指向序列最左边和最右边。我们为这两个变量起个好听的名字“哨兵i”和“哨兵j”。刚开始的时候让哨兵i指向序列的最左边（即i=1），指向数字6。让哨兵j指向序列的最右边（即=10），指向数字。</p>
 <p><img src="http://tao.nodeforces.com/sort/1.jpg" alt="alt text"></p>
@@ -206,13 +206,13 @@
 <p><img src="http://tao.nodeforces.com/sort/2.jpg" alt="alt text"></p>
 <p><img src="http://tao.nodeforces.com/sort/3.jpg" alt="alt text"></p>
 <p>现在交换哨兵i和哨兵j所指向的元素的值。交换之后的序列如下：</p>
-<p>6  1  2  <strong>++5++</strong>  9 3  4  7  10  8</p>
+<p>6  1  2  <strong>5</strong>  9 3  4  7  10  8</p>
 <p><img src="http://tao.nodeforces.com/sort/4.jpg" alt="alt text"></p>
 <p><img src="http://tao.nodeforces.com/sort/5.jpg" alt="alt text"></p>
 <p>到此，第一次交换结束。接下来开始哨兵j继续向左挪动（再友情提醒，每次必须是哨兵j先出发）。他发现了4（比基准数6要小，满足要求）之后停了下来。哨兵i也继续向右挪动的，他发现了9（比基准数6要大，满足要求）之后停了下来。此时再次进行交换，交换之后的序列如下：</p>
-<p>6  1  2 5  <strong>++4++</strong>  3  <strong>++9++</strong>  7 10  8</p>
+<p>6  1  2 5  <strong>4</strong>  3  <strong>9</strong>  7 10  8</p>
 <p>第二次交换结束，“探测”继续。哨兵j继续向左挪动，他发现了3（比基准数6要小，满足要求）之后又停了下来。哨兵i继续向右移动，糟啦！此时哨兵i和哨兵j相遇了，哨兵i和哨兵j都走到3面前。说明此时“探测”结束。我们将基准数6和3进行交换。交换之后的序列如下：</p>
-<p><strong>++3++</strong>  1 2  5  4  <strong>++6++</strong>  9 7  10  8</p>
+<p><strong>3</strong>  1 2  5  4  <strong>6</strong>  9 7  10  8</p>
 <p><img src="http://tao.nodeforces.com/sort/6.jpg" alt="alt text"></p>
 <p><img src="http://tao.nodeforces.com/sort/7.jpg" alt="alt text"></p>
 <p><img src="http://tao.nodeforces.com/sort/8.jpg" alt="alt text"></p>
@@ -314,6 +314,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/11/07/快速幂/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          快速幂算法简析
+        
+      </div>
+    </a>
   
   
     <a href="/2018/08/27/python为什么慢/" id="article-nav-older" class="article-nav-link-wrap">
@@ -450,11 +459,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>
