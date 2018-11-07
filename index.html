@@ -186,15 +186,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>### </p>
-<p>快速幂的目的就是做到快速求幂，假设我们要求a^b,按照朴素算法就是把a连乘b次，这样一来时间复杂度是O(b)也即是O(n)级别，快速幂能做到O(logn)，快了好多好多。它的原理如下：</p>
-<p>　　假设我们要求a^b，那么其实b是可以拆成二进制的，该二进制数第i位的权为2^(i-1)，例如当b==11时，<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">11的二进制是1011，11 = 2³×1 + 2²×0 + 2¹×1 + 2º×1，因此，我们将a¹¹转化为</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```math</span><br><span class="line">a^&#123;11&#125; = a^&#123;(2^0)&#125;* a^&#123;(2^1)&#125; *a^&#123;(2^3)&#125;</span><br></pre></td></tr></table></figure></p>
-<p>看出来快的多了，原来算11次，现在算三次，但是这三项貌似不好求的样子….不急，下面会有详细解释。</p>
-<p>由于是二进制，很自然地想到用位运算这个强大的工具： &amp;  和 &gt;&gt; ，&amp;运算通常用于二进制取位操作，例如一个数 &amp; 1 的结果就是取二进制的最末位。还可以判断奇偶:x&amp;1== 0为偶，x&amp;1==1为奇。&gt;&gt;运算比较单纯,就是二进制去掉最后一位。<br>　　<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">　　int KsmPow(long long a,long long  b)</span><br><span class="line">　　&#123;</span><br><span class="line">    int ans=1;</span><br><span class="line">    while(b)</span><br><span class="line">    &#123;</span><br><span class="line">        if(b&amp;1)</span><br><span class="line">        　　ans*=a;</span><br><span class="line">        </span><br><span class="line">        a*=a;</span><br><span class="line">        b&gt;&gt;=1;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>代码很短，死记也可行，但最好还是理解一下吧，其实也很好理解，以b==11为例，b=&gt;1011,二进制从右向左算，但乘出来的顺序是<br><code>a^(2^0)*a^(2^1)*a^(2^3)</code>，是从左向右的。我们不断的让a*=a目的即是累乘，以便随时对ans做出贡献。</p>
-<p>其中要理解a*=a这一步：因为 a*a\==a^2，下一步再乘，就是a^2*a^2\==a^4，然后同理  a^4*a^4=a^8，由此可以做到a–&gt;a^2–&gt;a^4–&gt;a^8–&gt;a^16–&gt;a^32…….指数正是 2^i ，再看上面的例子，a¹¹= a1*a2*a8，这三项就可以完美解决了，快速幂就是这样。</p>
-<p>指数函数是爆炸增长的函数，所以很有可能会爆掉int的范围，根据题意选择 long long或者mod某个数。</p>
-
+        <h3 id="当然是快速幂啦"><a href="#当然是快速幂啦" class="headerlink" title="当然是快速幂啦"></a>当然是快速幂啦</h3><p>快速幂的目的就是做到快速求幂，假设我们要求a^b,按照朴素算法就是把a连乘b次，这样一来时间复杂度是O(b)也即是O(n)级别，快速幂能做到O(logn)，快了好多好多。它的原理如下：</p>
+        
+          <a class="article-more-a" href="/2018/11/07/快速幂/#more">more >></a>
+        
       
 
       
@@ -1129,11 +1124,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
