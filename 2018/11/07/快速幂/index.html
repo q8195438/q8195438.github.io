@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Care-blog">
 <meta property="og:description" content="当然是快速幂啦快速幂的目的就是做到快速求幂，假设我们要求a^b,按照朴素算法就是把a连乘b次，这样一来时间复杂度是O(b)也即是O(n)级别，快速幂能做到O(logn)，快了好多好多。它的原理如下：">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-08T02:14:38.029Z">
+<meta property="og:updated_time" content="2018-11-14T17:11:28.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速幂算法简析">
 <meta name="twitter:description" content="当然是快速幂啦快速幂的目的就是做到快速求幂，假设我们要求a^b,按照朴素算法就是把a连乘b次，这样一来时间复杂度是O(b)也即是O(n)级别，快速幂能做到O(logn)，快了好多好多。它的原理如下：">
@@ -189,17 +189,11 @@
 <a id="more"></a>
 <p>　　假设我们要求a^b，那么其实b是可以拆成二进制的，该二进制数第i位的权为2^(i-1)，例如当b==11时 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a^11=a^(2^0+2^1+2^3)</span><br></pre></td></tr></table></figure>
-<p>11的二进制是1011，</p>
+<p>11的二进制是1011</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11 = 2³×1 + 2²×0 + 2¹×1 + 2º×1</span><br></pre></td></tr></table></figure>
-<p>，因此，我们将a¹¹转化为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">看出来快的多了，原来算11次，现在算三次，但是这三项貌似不好求的样子....不急，下面会有详细解释。</span><br><span class="line"></span><br><span class="line">由于是二进制，很自然地想到用位运算这个强大的工具： &amp;  和 &gt;&gt; ，&amp;运算通常用于二进制取位操作，例如一个数 &amp; 1 的结果就是取二进制的最末位。还可以判断奇偶:x&amp;1== 0为偶，x&amp;1==1为奇。&gt;&gt;运算比较单纯,就是二进制去掉最后一位。</span><br></pre></td></tr></table></figure>
-<p>　　int KsmPow(long long a,long long  b)<br>　　{<br>        int ans=1;<br>        while(b)<br>        {<br>            if(b&amp;1)<br>            　　ans*=a;</p>
-<pre><code>        a*=a;
-        b&gt;&gt;=1;
-    }
-    return ans;
-}
-</code></pre><p>```</p>
+<p>因此，我们将a¹¹转化为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a^11 = a^(2^0)* a^(2^1)* a^(2^3)</span><br></pre></td></tr></table></figure></p>
+<p>看出来快的多了，原来算11次，现在算三次，但是这三项貌似不好求的样子….不急，下面会有详细解释。</p>
+<p>由于是二进制，很自然地想到用位运算这个强大的工具： &amp;  和 &gt;&gt; ，&amp;运算通常用于二进制取位操作，例如一个数 &amp; 1 的结果就是取二进制的最末位。还可以判断奇偶:x&amp;1== 0为偶，x&amp;1==1为奇。&gt;&gt;运算比较单纯,就是二进制去掉最后一位。<br>　　<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">　　int KsmPow(long long a,long long  b)</span><br><span class="line">　　&#123;</span><br><span class="line">    int ans=1;</span><br><span class="line">    while(b)</span><br><span class="line">    &#123;</span><br><span class="line">        if(b&amp;1)</span><br><span class="line">        　　ans*=a;</span><br><span class="line">        </span><br><span class="line">        a*=a;</span><br><span class="line">        b&gt;&gt;=1;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>代码很短，死记也可行，但最好还是理解一下吧，其实也很好理解，以<code>b=11</code>为例，<code>b=&gt;1011</code>,二进制从右向左算，但乘出来的顺序是 <code>a^(2^0)*a^(2^1)*a^(2^3)</code>，是从左向右的。我们不断的让<code>a*=a</code>目的即是累乘，以便随时对ans做出贡献。</p>
 <p>其中要理解<code>a*=a</code>这一步：因为 <code>a*a=a^2</code>，下一步再乘，就是<code>a^2*a^2=a^4</code>，然后同理  <code>a^4*a^4=a^8</code>，由此可以做到<code>a--&gt;a^2--&gt;a^4--&gt;a^8--&gt;a^16--&gt;a^32</code>指数正是 <code>2^i</code> ，再看上面的例子，<code>a¹¹= a1*a2*a8</code>，这三项就可以完美解决了，快速幂就是这样。</p>
 <p>指数函数是爆炸增长的函数，所以很有可能会爆掉int的范围，根据题意选择 <code>long long</code>或者<code>mod</code>某个数。</p>
