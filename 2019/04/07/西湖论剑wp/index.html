@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false,"dimmer":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="CRYPTO2——哈夫曼之谜题面如下">
+<meta name="keywords" content="随笔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019西湖论剑部分WriteUp">
+<meta property="og:url" content="http://nodeforces.com/2019/04/07/西湖论剑wp/index.html">
+<meta property="og:site_name" content="Syl4s_Blog">
+<meta property="og:description" content="CRYPTO2——哈夫曼之谜题面如下">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-07T14:14:23.461Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019西湖论剑部分WriteUp">
+<meta name="twitter:description" content="CRYPTO2——哈夫曼之谜题面如下">
+
+
+
+
+
+
+  <link rel="canonical" href="http://nodeforces.com/2019/04/07/西湖论剑wp/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>2019西湖论剑部分WriteUp | Syl4s_Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Syl4s_Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">一个人的命运呀，当然要靠自我奋斗，但是也要考虑到历史的行程。</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://nodeforces.com/2019/04/07/西湖论剑wp/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="QSEC_Syl4s"/>
+      <meta itemprop="description" content="年轻人,我想给你一点人生经验"/>
+      <meta itemprop="image" content="http://tao.nodeforces.com/hexo/avatar.png"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Syl4s_Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2019西湖论剑部分WriteUp
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-07 17:49:00 / 修改时间：22:14:23" itemprop="dateCreated datePublished" datetime="2019-04-07T17:49:00+08:00">2019-04-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="CRYPTO2——哈夫曼之谜"><a href="#CRYPTO2——哈夫曼之谜" class="headerlink" title="CRYPTO2——哈夫曼之谜"></a>CRYPTO2——哈夫曼之谜</h3><h4 id="题面如下"><a href="#题面如下" class="headerlink" title="题面如下"></a>题面如下</h4><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">11000111000001010010010101100110110101111101110101011110111111100001000110010110101111001101110001000110</span><br><span class="line"></span><br><span class="line">a:4</span><br><span class="line">d:9</span><br><span class="line">g:1</span><br><span class="line">f:5</span><br><span class="line">l:1</span><br><span class="line">0:7</span><br><span class="line">5:9</span><br><span class="line">&#123;:1</span><br><span class="line">&#125;:1</span><br></pre></td></tr></table></figure>
+<p>没有什么题目说明，所以直接从题目中获取信息。</p>
+<p>之前了解过哈夫曼编码可以用在通讯加密中，用字母和字母出现的顺序进行编码。</p>
+<p>所以这道题第一行的加密串应该是利用下方所给出的数据进行哈夫曼加密。</p>
+<p>先建树</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Character:a freq:4    encoding: 000</span><br><span class="line">Character:d freq:9    encoding: 01</span><br><span class="line">Character:g freq:1    encoding: 00100</span><br><span class="line">Character:f freq:5    encoding: 110</span><br><span class="line">Character:l freq:1    encoding: 00101</span><br><span class="line">Character:0 freq:7    encoding: 111</span><br><span class="line">Character:5 freq:9    encoding: 10</span><br><span class="line">Character:&#123; freq:1    encoding: 00110</span><br><span class="line">Character:&#125; freq:1    encoding: 00111</span><br></pre></td></tr></table></figure>
+<p>得到结果如下，通过解码，得到字符串</p>
+<figure class="highlight plain"><figcaption><span>```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">那么好，真的很像flag的样子</span><br><span class="line"></span><br><span class="line">但是怎么这么怪异？？？</span><br><span class="line"></span><br><span class="line">很显然lg&#123;&#125;这四个字符都只有出现过一次，并且d和5这两个字符都出现过9次，这样在建树的时候就会出现不唯一性。</span><br><span class="line"></span><br><span class="line">如果意识到这点就棒极了！！</span><br><span class="line"></span><br><span class="line">整理过后这个字符串变成</span><br><span class="line"></span><br><span class="line">```  flag&#123;ddf5dfd0f05550500a5af55dd0d5d0ad&#125;</span><br></pre></td></tr></table></figure>
+<p>就这么简单哈哈哈</p>
+<p>贴出建树代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#Huffman Encoding</span><br><span class="line"></span><br><span class="line">#Tree-Node Type</span><br><span class="line">class Node:</span><br><span class="line">    def __init__(self,freq):</span><br><span class="line">        self.left = None</span><br><span class="line">        self.right = None</span><br><span class="line">        self.father = None</span><br><span class="line">        self.freq = freq</span><br><span class="line">    def isLeft(self):</span><br><span class="line">        return self.father.left == self</span><br><span class="line">#create nodes创建叶子节点</span><br><span class="line">def createNodes(freqs):</span><br><span class="line">    return [Node(freq) for freq in freqs]</span><br><span class="line"></span><br><span class="line">#create Huffman-Tree创建Huffman树</span><br><span class="line">def createHuffmanTree(nodes):</span><br><span class="line">    queue = nodes[:]</span><br><span class="line">    while len(queue) &gt; 1:</span><br><span class="line">        queue.sort(key=lambda item:item.freq)</span><br><span class="line">        node_left = queue.pop(0)</span><br><span class="line">        node_right = queue.pop(0)</span><br><span class="line">        node_father = Node(node_left.freq + node_right.freq)</span><br><span class="line">        node_father.left = node_left</span><br><span class="line">        node_father.right = node_right</span><br><span class="line">        node_left.father = node_father</span><br><span class="line">        node_right.father = node_father</span><br><span class="line">        queue.append(node_father)</span><br><span class="line">    queue[0].father = None</span><br><span class="line">    return queue[0]</span><br><span class="line">#Huffman编码</span><br><span class="line">def huffmanEncoding(nodes,root):</span><br><span class="line">    codes = [&apos;&apos;] * len(nodes)</span><br><span class="line">    for i in range(len(nodes)):</span><br><span class="line">        node_tmp = nodes[i]</span><br><span class="line">        while node_tmp != root:</span><br><span class="line">            if node_tmp.isLeft():</span><br><span class="line">                codes[i] = &apos;0&apos; + codes[i]</span><br><span class="line">            else:</span><br><span class="line">                codes[i] = &apos;1&apos; + codes[i]</span><br><span class="line">            node_tmp = node_tmp.father</span><br><span class="line">    return codes</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    #chars = [&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;,&apos;E&apos;,&apos;F&apos;,&apos;G&apos;,&apos;H&apos;,&apos;I&apos;,&apos;J&apos;,&apos;K&apos;,&apos;L&apos;,&apos;M&apos;,&apos;N&apos;]</span><br><span class="line">    #freqs = [10,4,2,5,3,4,2,6,4,4,3,7,9,6]</span><br><span class="line">    chars_freqs = [(&apos;C&apos;, 2), (&apos;G&apos;, 2), (&apos;E&apos;, 3), (&apos;K&apos;, 3), (&apos;B&apos;, 4),</span><br><span class="line">                   (&apos;F&apos;, 4), (&apos;I&apos;, 4), (&apos;J&apos;, 4), (&apos;D&apos;, 5), (&apos;H&apos;, 6),</span><br><span class="line">                   (&apos;N&apos;, 6), (&apos;L&apos;, 7), (&apos;M&apos;, 9), (&apos;A&apos;, 10)]</span><br><span class="line">    nodes = createNodes([item[1] for item in chars_freqs])</span><br><span class="line">    root = createHuffmanTree(nodes)</span><br><span class="line">    codes = huffmanEncoding(nodes,root)</span><br><span class="line">    for item in zip(chars_freqs,codes):</span><br><span class="line">        print &apos;Character:%s freq:%-2d   encoding: %s&apos; % (item[0][0],item[0][1],item[1])</span><br></pre></td></tr></table></figure>
+<h3 id="Misc1-最短的路"><a href="#Misc1-最短的路" class="headerlink" title="Misc1 最短的路"></a>Misc1 最短的路</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#资深宅“flag&#123;”在朋友邀请下，参加了一场聚会。</span><br><span class="line">#在聚会上看到了美女“75D&#125;”,一时心花荡漾、不能自己，坚信彼此就是天造地设的一双。</span><br><span class="line">#想通过层层朋友的关系认识她，却无奈性格问题，不敢劳师动众。</span><br><span class="line">#好在朋友帮忙搞到一张聚会人员关系图，如下：</span><br><span class="line"></span><br><span class="line">[(&apos;FloraPrice&apos;,&apos;E11&apos;),(&apos;FloraPrice&apos;,&apos;E9&apos;),(&apos;FloraPrice&apos;,&apos;75D&#125;&apos;),(&apos;NoraFayette&apos;,&apos;E11&apos;),(&apos;NoraFayette&apos;,&apos;E10&apos;),(&apos;NoraFayette&apos;,&apos;E13&apos;),(&apos;NoraFayette&apos;,&apos;E12&apos;),(&apos;NoraFayette&apos;,&apos;E14&apos;),(&apos;NoraFayette&apos;,&apos;E9&apos;),(&apos;NoraFayette&apos;,&apos;E7&apos;),(&apos;NoraFayette&apos;,&apos;E6&apos;),(&apos;E10&apos;,&apos;SylviaAvondale&apos;),(&apos;E10&apos;,&apos;MyraLiddel&apos;),(&apos;E10&apos;,&apos;HelenLloyd&apos;),(&apos;E10&apos;,&apos;KatherinaRogers&apos;),(&apos;VerneSanderson&apos;,&apos;E7&apos;),(&apos;VerneSanderson&apos;,&apos;E12&apos;),(&apos;VerneSanderson&apos;,&apos;E9&apos;),(&apos;VerneSanderson&apos;,&apos;E8&apos;),(&apos;E12&apos;,&apos;HelenLloyd&apos;),(&apos;E12&apos;,&apos;KatherinaRogers&apos;),(&apos;E12&apos;,&apos;SylviaAvondale&apos;),(&apos;E12&apos;,&apos;MyraLiddel&apos;),(&apos;E14&apos;,&apos;SylviaAvondale&apos;),(&apos;E14&apos;,&apos;75D&#125;&apos;),(&apos;E14&apos;,&apos;KatherinaRogers&apos;),(&apos;FrancesAnderson&apos;,&apos;E5&apos;),(&apos;FrancesAnderson&apos;,&apos;E6&apos;),(&apos;FrancesAnderson&apos;,&apos;E8&apos;),(&apos;FrancesAnderson&apos;,&apos;E3&apos;),(&apos;DorothyMurchison&apos;,&apos;E9&apos;),(&apos;DorothyMurchison&apos;,&apos;E8&apos;),(&apos;EvelynJefferson&apos;,&apos;E9&apos;),(&apos;EvelynJefferson&apos;,&apos;E8&apos;),(&apos;EvelynJefferson&apos;,&apos;E5&apos;),(&apos;EvelynJefferson&apos;,&apos;E4&apos;),(&apos;EvelynJefferson&apos;,&apos;E6&apos;),(&apos;EvelynJefferson&apos;,&apos;E1&apos;),(&apos;EvelynJefferson&apos;,&apos;E3&apos;),(&apos;EvelynJefferson&apos;,&apos;E2&apos;),(&apos;RuthDeSand&apos;,&apos;E5&apos;),(&apos;RuthDeSand&apos;,&apos;E7&apos;),(&apos;RuthDeSand&apos;,&apos;E9&apos;),(&apos;RuthDeSand&apos;,&apos;E8&apos;),(&apos;HelenLloyd&apos;,&apos;E11&apos;),(&apos;HelenLloyd&apos;,&apos;E7&apos;),(&apos;HelenLloyd&apos;,&apos;E8&apos;),(&apos;OliviaCarleton&apos;,&apos;E11&apos;),(&apos;OliviaCarleton&apos;,&apos;E9&apos;),(&apos;EleanorNye&apos;,&apos;E5&apos;),(&apos;EleanorNye&apos;,&apos;E7&apos;),(&apos;EleanorNye&apos;,&apos;E6&apos;),(&apos;EleanorNye&apos;,&apos;E8&apos;),(&apos;E9&apos;,&apos;TheresaAnderson&apos;),(&apos;E9&apos;,&apos;PearlOglethorpe&apos;),(&apos;E9&apos;,&apos;KatherinaRogers&apos;),(&apos;E9&apos;,&apos;SylviaAvondale&apos;),(&apos;E9&apos;,&apos;MyraLiddel&apos;),(&apos;E8&apos;,&apos;TheresaAnderson&apos;),(&apos;E8&apos;,&apos;PearlOglethorpe&apos;),(&apos;E8&apos;,&apos;KatherinaRogers&apos;),(&apos;E8&apos;,&apos;SylviaAvondale&apos;),(&apos;E8&apos;,&apos;BrendaRogers&apos;),(&apos;E8&apos;,&apos;LauraMandeville&apos;),(&apos;E8&apos;,&apos;MyraLiddel&apos;),(&apos;E5&apos;,&apos;TheresaAnderson&apos;),(&apos;E5&apos;,&apos;BrendaRogers&apos;),(&apos;E5&apos;,&apos;LauraMandeville&apos;),(&apos;E5&apos;,&apos;CharlotteMcDowd&apos;),(&apos;E4&apos;,&apos;CharlotteMcDowd&apos;),(&apos;E4&apos;,&apos;TheresaAnderson&apos;),(&apos;E4&apos;,&apos;BrendaRogers&apos;),(&apos;E7&apos;,&apos;TheresaAnderson&apos;),(&apos;E7&apos;,&apos;SylviaAvondale&apos;),(&apos;E7&apos;,&apos;BrendaRogers&apos;),(&apos;E7&apos;,&apos;LauraMandeville&apos;),(&apos;E7&apos;,&apos;CharlotteMcDowd&apos;),(&apos;E6&apos;,&apos;TheresaAnderson&apos;),(&apos;E6&apos;,&apos;PearlOglethorpe&apos;),(&apos;E6&apos;,&apos;BrendaRogers&apos;),(&apos;E6&apos;,&apos;LauraMandeville&apos;),(&apos;E1&apos;,&apos;LauraMandeville&apos;),(&apos;E1&apos;,&apos;BrendaRogers&apos;),(&apos;E3&apos;,&apos;TheresaAnderson&apos;),(&apos;E3&apos;,&apos;BrendaRogers&apos;),(&apos;E3&apos;,&apos;LauraMandeville&apos;),(&apos;E3&apos;,&apos;CharlotteMcDowd&apos;),(&apos;E3&apos;,&apos;flag&#123;&apos;),(&apos;E2&apos;,&apos;LauraMandeville&apos;),(&apos;E2&apos;,&apos;TheresaAnderson&apos;),(&apos;KatherinaRogers&apos;,&apos;E13&apos;),(&apos;E13&apos;,&apos;SylviaAvondale&apos;)]</span><br><span class="line"></span><br><span class="line">#你能在让最少人知道的情况下，帮助flag先生联系上75D小姐姐吗？</span><br><span class="line">#求节点“flag&#123;”到“75D”的最短路径，即为flag，比如：flag&#123;E3AliceBobXXXXXXXXXXXXXXXX75D&#125;</span><br></pre></td></tr></table></figure>
+<p>真的就是最短的路，找出最短的路就好了，可以建图，也可以直接从两边找，挺简单，给的数据中很多无效数据。<br>最后得到flag是</p>
+<p><code>E3EvelynJeffersonE9FloraPrice75D</code></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/随笔/" rel="tag"># 随笔</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/29/评教/" rel="next" title="新版教务处一键评教脚本(防约谈版)">
+                <i class="fa fa-chevron-left"></i> 新版教务处一键评教脚本(防约谈版)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://tao.nodeforces.com/hexo/avatar.png"
+                alt="QSEC_Syl4s"/>
+            
+              <p class="site-author-name" itemprop="name">QSEC_Syl4s</p>
+              <p class="site-description motion-element" itemprop="description">年轻人,我想给你一点人生经验</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/q8195438" title="GitHub &rarr; https://github.com/q8195438" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/u/3554769402/" title="Weibo &rarr; https://weibo.com/u/3554769402/" rel="noopener" target="_blank"><i class="fa fa-fw fa-globe"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CRYPTO2——哈夫曼之谜"><span class="nav-number">1.</span> <span class="nav-text">CRYPTO2——哈夫曼之谜</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题面如下"><span class="nav-number">1.1.</span> <span class="nav-text">题面如下</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc1-最短的路"><span class="nav-number">2.</span> <span class="nav-text">Misc1 最短的路</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">QSEC_Syl4s Copyright © Syl4s. All rights reserved.  <a href="http://www.miitbeian.gov.cn" target="_blank">黑ICP备17005003号-1</a></span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
