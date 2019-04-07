@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://nodeforces.com">
-  <title>Python为什么慢 | Care-blog</title>
+  <title>2019西湖论剑部分WriteUp | Care-blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、动态类型导致运行速度慢，在北邮人论坛里面的这篇帖子中有较为详细的解释，原文中有举例说明，本文没有例子讲解只是提取了原理来讲解，内容主要如下：a、动态语言中的执行过程 　　Python等动态类型语言之所以慢，就是因为每一个简单的操作都需要大量的指令才能完成。他们的虚拟机拥有很强的优化器，却是为静态语言设计的。对Python几乎没有效果。举一个例子。对于整数加法，C语言很简单，只要一个机器指令AD">
+  <meta name="description" content="CRYPTO2——哈夫曼之谜题面如下">
 <meta name="keywords" content="随笔">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python为什么慢">
-<meta property="og:url" content="http://nodeforces.com/2018/08/27/python为什么慢/index.html">
+<meta property="og:title" content="2019西湖论剑部分WriteUp">
+<meta property="og:url" content="http://nodeforces.com/2019/04/07/西湖论剑wp/index.html">
 <meta property="og:site_name" content="Care-blog">
-<meta property="og:description" content="一、动态类型导致运行速度慢，在北邮人论坛里面的这篇帖子中有较为详细的解释，原文中有举例说明，本文没有例子讲解只是提取了原理来讲解，内容主要如下：a、动态语言中的执行过程 　　Python等动态类型语言之所以慢，就是因为每一个简单的操作都需要大量的指令才能完成。他们的虚拟机拥有很强的优化器，却是为静态语言设计的。对Python几乎没有效果。举一个例子。对于整数加法，C语言很简单，只要一个机器指令AD">
+<meta property="og:description" content="CRYPTO2——哈夫曼之谜题面如下">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-28T02:50:45.185Z">
+<meta property="og:updated_time" content="2019-04-07T10:04:30.004Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python为什么慢">
-<meta name="twitter:description" content="一、动态类型导致运行速度慢，在北邮人论坛里面的这篇帖子中有较为详细的解释，原文中有举例说明，本文没有例子讲解只是提取了原理来讲解，内容主要如下：a、动态语言中的执行过程 　　Python等动态类型语言之所以慢，就是因为每一个简单的操作都需要大量的指令才能完成。他们的虚拟机拥有很强的优化器，却是为静态语言设计的。对Python几乎没有效果。举一个例子。对于整数加法，C语言很简单，只要一个机器指令AD">
+<meta name="twitter:title" content="2019西湖论剑部分WriteUp">
+<meta name="twitter:description" content="CRYPTO2——哈夫曼之谜题面如下">
   
     <link rel="alternative" href="/atom.xml" title="Care-blog" type="application/atom+xml">
   
@@ -165,63 +165,41 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="w-python为什么慢" class="article article-type-w " itemscope itemprop="blogPost">
+            <article id="w-西湖论剑wp" class="article article-type-w " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Python为什么慢
+      2019西湖论剑部分WriteUp
     </h1>
   
 
         
-        <a href="/2018/08/27/python为什么慢/" class="archive-article-date">
-  	<time datetime="2018-08-27T03:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-27</time>
+        <a href="/2019/04/07/西湖论剑wp/" class="archive-article-date">
+  	<time datetime="2019-04-07T09:49:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="一、动态类型导致运行速度慢，在北邮人论坛里面的这篇帖子中有较为详细的解释，原文中有举例说明，本文没有例子讲解只是提取了原理来讲解，内容主要如下："><a href="#一、动态类型导致运行速度慢，在北邮人论坛里面的这篇帖子中有较为详细的解释，原文中有举例说明，本文没有例子讲解只是提取了原理来讲解，内容主要如下：" class="headerlink" title="一、动态类型导致运行速度慢，在北邮人论坛里面的这篇帖子中有较为详细的解释，原文中有举例说明，本文没有例子讲解只是提取了原理来讲解，内容主要如下："></a>一、动态类型导致运行速度慢，在北邮人论坛里面的这篇帖子中有较为详细的解释，原文中有举例说明，本文没有例子讲解只是提取了原理来讲解，内容主要如下：</h3><p>a、动态语言中的执行过程</p>
-<p>　　Python等动态类型语言之所以慢，就是因为每一个简单的操作都需要大量的指令才能完成。他们的虚拟机拥有很强的优化器，却是为静态语言设计的。对Python几乎没有效果。举一个例子。对于整数加法，C语言很简单，只要一个机器指令ADD就可以了，最多不过再加一些内存读写。但是，对于Python来说，a+b这样的简单二元运算，可就真的很麻烦了。Python是动态语言，变量只是对象的引用，变量a和b本身都没有类型，而它们的值有类型。所以，在相“加”之前，必须先判断类型。<br><a id="more"></a></p>
-<ol>
-<li>判断a是否为整数，否则跳到第9步</li>
-<li>判断b是否为整数，否则跳到第9步</li>
-<li>将a指向的对象中的整数值读出来</li>
-<li>将b指向的对象中的整数值读出来</li>
-<li>进行整数相加</li>
-<li>生成一个新整数对象</li>
-<li>将运算结果存进去</li>
-<li>返回这个对象，完成！</li>
-<li>判断a是否为字符串，否则跳到第13步</li>
-<li>判断b是否为字符串，否则跳到第13步</li>
-<li>进行字符串串接操作，生成一个新字符串对象</li>
-<li>返回这个对象，完成！</li>
-<li>从a的字典里取出<strong>add</strong>方法</li>
-<li>调用这个方法，将a和b作为参数传入</li>
-<li>返回上述方法的返回值。<br>这还只是简化版的，实际中还要考虑溢出问题等。</li>
-</ol>
-<p>b、Jpython</p>
-<p>　　Jython能做的只是把Python代码转换成JVM的代码，而Python中那些判断a,b是否为整数或者字符串的操作是不能省略的。毕竟Python是允许你写1+2同时也可以”hello”+”world”。这种运行时的类型检查并不能简单地通过编译而去除。</p>
-<p>c、谷歌的Unladen Swallow项目</p>
-<p>　　它是一个很有雄心的项目，但是，在项目开始一年后就流产了。最后，加速效果也不过50%左右。它们使用的方法是朴素的“模板编译法”：看到Python的加法操作，就转换成一个C语言的函数调用，调用Python的PyNumber_Add函数。这个函数就是干类似上面一串的事。同样地，虽然去除了官方Python的解释器代价，但并没有消除运行时类型检查的代价。</p>
-<p>d、pypy为什么比较快和pypy的不足：</p>
-<p>　　PyPy可以将Python的速度加到C的一半左右。PyPy使用了一种技巧，就是“类型推导”（Type Inference）。PyPy的运行时编译器（Just-in-time compiler，或者称JIT Compiler）的工作方式是，只优化循环，因为大量的时间都是消耗在少数循环上。当运行时检测到某个循环运行的次数很多的时候，就开启一个“录像机”，录制这个循环执行一次中，执行的所有操作的轨迹。这样以“轨迹”为单位的编译方式叫Tracing JIT。当类型确定以后，其中涉及的数据都是整数，都可以直接对应机器指令进行执行。程序起码在这一部分已经由动态的代码变成像C一样的静态类型代码了，而且数据类型很接近机器。将这一段代码编译成机器码，效率就可以和C相比了。</p>
-<p>　　　注意到，这其实是一种“猜测”：优化器“猜想”每次执行循环for i in range(n)，i和n都是整数。这种猜测是可能出错的。万一程序员将一个字符串传入函数怎么办呢？所以，基于“猜测”（speculation）的优化必须考虑“猜错了”的情形。这就是优化过的代码的第1、3、11行的用途。1和3考虑万一i和n不是整数的情形，而15考虑了整数溢出的情况。在Python里，整数都是高精度整数，可以是任意大的，而不仅限于32位。（其实上述32位也只是假设，在64位机上，显然64位效率更高。）所以，如果猜错了（这种事经常会发生），就必须停止执行这段“优化”过的代码，而是老老实实回到解释器中，像传统的Python一样执行。<br>可以看出，带有类型推导功能的Tracing JIT编译器可以大幅度加快动态语言的速度。主要原因是：</p>
-<ol>
-<li>在运行时得到了变量的类型，并通过“猜测”，将这些类型转换成接近机器的类型。</li>
-<li>将简化的操作编译成机器码，去除了解释器的代价。<br>目前，PyPy是一个很活跃的项目。但是，毕竟是一个研究型的项目，PyPy也有自己的不足。如和官方Python并不完全兼容；PyPy本身的可执行文件很大；并不是运行所有的程序都快——PyPy虽然JIT Compiler很快，但它的解释器速度不如官方的Python，对于无法通过优化加速的程序来说，PyPy就不快了。</li>
-</ol>
-<h3 id="二、python慢不仅是因为动态类型，甚至不是python慢的主要原因，在现实中，在C语言和Python在运行时的巨大的不同是由于数据结构和算法的不同。"><a href="#二、python慢不仅是因为动态类型，甚至不是python慢的主要原因，在现实中，在C语言和Python在运行时的巨大的不同是由于数据结构和算法的不同。" class="headerlink" title="二、python慢不仅是因为动态类型，甚至不是python慢的主要原因，在现实中，在C语言和Python在运行时的巨大的不同是由于数据结构和算法的不同。"></a>二、python慢不仅是因为动态类型，甚至不是python慢的主要原因，在现实中，在C语言和Python在运行时的巨大的不同是由于数据结构和算法的不同。</h3><p>用Python写不同的代码 </p>
-<p>让我们用一个实例来说明问题。一个Python程序员可能很喜欢用下面的例子表示一个平面上的点：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">point = &#123;<span class="string">'x'</span>: <span class="number">0</span>, <span class="string">'y'</span>: <span class="number">0</span>&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这种方法很易读，容易编码，形式很优雅。<br>另一个方面，一个C语言程序员可能使用结构体来表示平面上的点：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">struct Point &#123;</span><br><span class="line">   int x;</span><br><span class="line">   int y;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>尽管这种方法也和Python能一样的工作并且都是很优雅的，但这是完全不同的数据结构。这里我们告诉了编译器，我们有两个字段x和y。知道了这两个字段的类型，编译器将分配一块连续的内存来储存这两个数据。换一句话说，就像一个数组一样。任何时间，编译器都知道给定的x和y在哪里。我们可以很容易地访问这些数据，就像是访问某些常数据一样。<br>Python使用哈希散列的方法来解决类似的问题。所以编译器不能简单地分配连续内存存储x和y来处理这些问题。由于我们在其中任意的地方都可能出现这些键。如果我们想的话，我们也可能删除这些键。编译器必须要使用哈希函数来映射到你可能让他指向的任何存储单元。不用说，这些函数增加了处理时间。尽管也许减缓的很小，但是足可以拖慢你的代码，尤其是这种情况如果很多的时候。<br> 如果就是想将Python翻译成C语言的话，可能就像下面这样：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::hash_set point;</span><br><span class="line">point[“x”] = x</span><br><span class="line">point[“y”] = y</span><br></pre></td></tr></table></figure></p>
-<p>看这个代码片段，好像就是语言的设计者他们自己故意尽力使哈希表复杂，因此尽管是正确的，但没有人使用。由于这个原因，写C语言的人可能认为这是不可思议的，但为什么在Python就是可以接受的呢？<br>原因就是写Python代码的人的“dictionaries are lightweight objects”这种心态。看下面的代码，这在Python中最接近C语言结构体：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Point(object):</span><br><span class="line">     x, y = None, None</span><br><span class="line">     def __init__(self, x, y):</span><br><span class="line">          self.x, self.y = x, y</span><br></pre></td></tr></table></figure></p>
-<p>这对编译器是有用的，就像是C语言的结构体。例如第二行，我们明确告诉编译器但我们创造一个对象时我们总是至少需要两个数据段，我们希望编译器处理这个问题。<br>不幸的是这种标准的Python被叫做CPthon，不能总被使用。在我的机器上，下面的代码要执行186毫秒：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def sum_(points):</span><br><span class="line">    sum_x, sum_y = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> point in points:</span><br><span class="line">        sum_x += point[<span class="string">'x'</span>]</span><br><span class="line">        sum_y += point[<span class="string">'y'</span>]</span><br><span class="line">    <span class="keyword">return</span> sum_x, sum_y</span><br></pre></td></tr></table></figure></p>
-<p>在我的机器上，用point.x代替point[‘x’]会花费201毫秒。也就是说，会慢了8%。<br> 在CPthon中，point.x通常就是被处理成dict(point)[‘x’]。这意味着带着点的class仍然像以前一样使用字典（dictionary）的方法查找。这样的话，就很容易看出为什么directionary的方法被看为“轻量级的”。<br>一些Python写的代码就是为了效率而设计的，例如PyPy，能很快地执行。如果不使用Python而是使用PyPy，同样的代码片段执行时间分别是21.6和3.75毫秒。这种方法相比CPython在JIT-capable编译情况下结果都是令人满意的。换一句话说，PyPy能正确地使用数据结构。<br>我希望你再一次看这个最短时间3.75毫秒。这个数字表明我们能在一秒进行266000次运算，这些事来自Python的，其中有动态绑定，monkey-patching（在不改变源代码的情况下扩展或修改动态语言运行时代码的方法）等。所有的这些，都是在编码和实现中使用了更好的数据结构。下一次当你在用Python写一行代码时，想一想你在使用什么数据结构，显示的还是隐式的，考虑一下是否有更好的办法。这就是你用C语言写程序时考虑的，不是吗？<br>最后，我愿意相信这个文章是表明为什么Python是一个有前途的语言的一个清楚的例子（或者是类似的语言）。这表明了标准的Python实现，这里的CPython仅仅是作为一个参考，它从来就不是被设计用来更快地执行的。正如我们今天可以看到的，像PyPy一样的算法实现是可以优化你的代码到一个很好的长度。随着语言的自然发展，这些优化是可能的。我们仅仅用Python编程过23年，那么如果像C语言一样有42年的发展，Python会是什么样子呢？</p>
+        <h3 id="CRYPTO2——哈夫曼之谜"><a href="#CRYPTO2——哈夫曼之谜" class="headerlink" title="CRYPTO2——哈夫曼之谜"></a>CRYPTO2——哈夫曼之谜</h3><h4 id="题面如下"><a href="#题面如下" class="headerlink" title="题面如下"></a>题面如下</h4><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">11000111000001010010010101100110110101111101110101011110111111100001000110010110101111001101110001000110</span><br><span class="line"></span><br><span class="line">a:4</span><br><span class="line">d:9</span><br><span class="line">g:1</span><br><span class="line">f:5</span><br><span class="line">l:1</span><br><span class="line">0:7</span><br><span class="line">5:9</span><br><span class="line">&#123;:1</span><br><span class="line">&#125;:1</span><br></pre></td></tr></table></figure>
+<p>没有什么题目说明，所以直接从题目中获取信息。</p>
+<p>之前了解过哈夫曼编码可以用在通讯加密中，用字母和字母出现的顺序进行编码。</p>
+<p>所以这道题第一行的加密串应该是利用下方所给出的数据进行哈夫曼加密。</p>
+<p>先建树</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Character:a freq:4    encoding: 000</span><br><span class="line">Character:d freq:9    encoding: 01</span><br><span class="line">Character:g freq:1    encoding: 00100</span><br><span class="line">Character:f freq:5    encoding: 110</span><br><span class="line">Character:l freq:1    encoding: 00101</span><br><span class="line">Character:0 freq:7    encoding: 111</span><br><span class="line">Character:5 freq:9    encoding: 10</span><br><span class="line">Character:&#123; freq:1    encoding: 00110</span><br><span class="line">Character:&#125; freq:1    encoding: 00111</span><br></pre></td></tr></table></figure>
+<p>得到结果如下，通过解码，得到字符串</p>
+<figure class="highlight plain"><figcaption><span>```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">那么好，真的很像flag的样子</span><br><span class="line"></span><br><span class="line">但是怎么这么怪异？？？</span><br><span class="line"></span><br><span class="line">很显然lg&#123;&#125;这四个字符都只有出现过一次，并且d和5这两个字符都出现过9次，这样在建树的时候就会出现不唯一性。</span><br><span class="line"></span><br><span class="line">如果意识到这点就棒极了！！</span><br><span class="line"></span><br><span class="line">整理过后这个字符串变成</span><br><span class="line"></span><br><span class="line">``` flag&#123;ddf5dfd0f05550500a5af55dd0d5d0ad&#125;</span><br></pre></td></tr></table></figure>
+<p>就这么简单哈哈哈</p>
+<p>贴出建树代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#Huffman Encoding</span><br><span class="line"></span><br><span class="line">#Tree-Node Type</span><br><span class="line">class Node:</span><br><span class="line">    def __init__(self,freq):</span><br><span class="line">        self.left = None</span><br><span class="line">        self.right = None</span><br><span class="line">        self.father = None</span><br><span class="line">        self.freq = freq</span><br><span class="line">    def isLeft(self):</span><br><span class="line">        return self.father.left == self</span><br><span class="line">#create nodes创建叶子节点</span><br><span class="line">def createNodes(freqs):</span><br><span class="line">    return [Node(freq) for freq in freqs]</span><br><span class="line"></span><br><span class="line">#create Huffman-Tree创建Huffman树</span><br><span class="line">def createHuffmanTree(nodes):</span><br><span class="line">    queue = nodes[:]</span><br><span class="line">    while len(queue) &gt; 1:</span><br><span class="line">        queue.sort(key=lambda item:item.freq)</span><br><span class="line">        node_left = queue.pop(0)</span><br><span class="line">        node_right = queue.pop(0)</span><br><span class="line">        node_father = Node(node_left.freq + node_right.freq)</span><br><span class="line">        node_father.left = node_left</span><br><span class="line">        node_father.right = node_right</span><br><span class="line">        node_left.father = node_father</span><br><span class="line">        node_right.father = node_father</span><br><span class="line">        queue.append(node_father)</span><br><span class="line">    queue[0].father = None</span><br><span class="line">    return queue[0]</span><br><span class="line">#Huffman编码</span><br><span class="line">def huffmanEncoding(nodes,root):</span><br><span class="line">    codes = [&apos;&apos;] * len(nodes)</span><br><span class="line">    for i in range(len(nodes)):</span><br><span class="line">        node_tmp = nodes[i]</span><br><span class="line">        while node_tmp != root:</span><br><span class="line">            if node_tmp.isLeft():</span><br><span class="line">                codes[i] = &apos;0&apos; + codes[i]</span><br><span class="line">            else:</span><br><span class="line">                codes[i] = &apos;1&apos; + codes[i]</span><br><span class="line">            node_tmp = node_tmp.father</span><br><span class="line">    return codes</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    #chars = [&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;,&apos;E&apos;,&apos;F&apos;,&apos;G&apos;,&apos;H&apos;,&apos;I&apos;,&apos;J&apos;,&apos;K&apos;,&apos;L&apos;,&apos;M&apos;,&apos;N&apos;]</span><br><span class="line">    #freqs = [10,4,2,5,3,4,2,6,4,4,3,7,9,6]</span><br><span class="line">    chars_freqs = [(&apos;C&apos;, 2), (&apos;G&apos;, 2), (&apos;E&apos;, 3), (&apos;K&apos;, 3), (&apos;B&apos;, 4),</span><br><span class="line">                   (&apos;F&apos;, 4), (&apos;I&apos;, 4), (&apos;J&apos;, 4), (&apos;D&apos;, 5), (&apos;H&apos;, 6),</span><br><span class="line">                   (&apos;N&apos;, 6), (&apos;L&apos;, 7), (&apos;M&apos;, 9), (&apos;A&apos;, 10)]</span><br><span class="line">    nodes = createNodes([item[1] for item in chars_freqs])</span><br><span class="line">    root = createHuffmanTree(nodes)</span><br><span class="line">    codes = huffmanEncoding(nodes,root)</span><br><span class="line">    for item in zip(chars_freqs,codes):</span><br><span class="line">        print &apos;Character:%s freq:%-2d   encoding: %s&apos; % (item[0][0],item[0][1],item[1])</span><br></pre></td></tr></table></figure>
+<h3 id="Misc1-最短的路"><a href="#Misc1-最短的路" class="headerlink" title="Misc1 最短的路"></a>Misc1 最短的路</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#资深宅“flag&#123;”在朋友邀请下，参加了一场聚会。</span><br><span class="line">#在聚会上看到了美女“75D&#125;”,一时心花荡漾、不能自己，坚信彼此就是天造地设的一双。</span><br><span class="line">#想通过层层朋友的关系认识她，却无奈性格问题，不敢劳师动众。</span><br><span class="line">#好在朋友帮忙搞到一张聚会人员关系图，如下：</span><br><span class="line"></span><br><span class="line">[(&apos;FloraPrice&apos;,&apos;E11&apos;),(&apos;FloraPrice&apos;,&apos;E9&apos;),(&apos;FloraPrice&apos;,&apos;75D&#125;&apos;),(&apos;NoraFayette&apos;,&apos;E11&apos;),(&apos;NoraFayette&apos;,&apos;E10&apos;),(&apos;NoraFayette&apos;,&apos;E13&apos;),(&apos;NoraFayette&apos;,&apos;E12&apos;),(&apos;NoraFayette&apos;,&apos;E14&apos;),(&apos;NoraFayette&apos;,&apos;E9&apos;),(&apos;NoraFayette&apos;,&apos;E7&apos;),(&apos;NoraFayette&apos;,&apos;E6&apos;),(&apos;E10&apos;,&apos;SylviaAvondale&apos;),(&apos;E10&apos;,&apos;MyraLiddel&apos;),(&apos;E10&apos;,&apos;HelenLloyd&apos;),(&apos;E10&apos;,&apos;KatherinaRogers&apos;),(&apos;VerneSanderson&apos;,&apos;E7&apos;),(&apos;VerneSanderson&apos;,&apos;E12&apos;),(&apos;VerneSanderson&apos;,&apos;E9&apos;),(&apos;VerneSanderson&apos;,&apos;E8&apos;),(&apos;E12&apos;,&apos;HelenLloyd&apos;),(&apos;E12&apos;,&apos;KatherinaRogers&apos;),(&apos;E12&apos;,&apos;SylviaAvondale&apos;),(&apos;E12&apos;,&apos;MyraLiddel&apos;),(&apos;E14&apos;,&apos;SylviaAvondale&apos;),(&apos;E14&apos;,&apos;75D&#125;&apos;),(&apos;E14&apos;,&apos;KatherinaRogers&apos;),(&apos;FrancesAnderson&apos;,&apos;E5&apos;),(&apos;FrancesAnderson&apos;,&apos;E6&apos;),(&apos;FrancesAnderson&apos;,&apos;E8&apos;),(&apos;FrancesAnderson&apos;,&apos;E3&apos;),(&apos;DorothyMurchison&apos;,&apos;E9&apos;),(&apos;DorothyMurchison&apos;,&apos;E8&apos;),(&apos;EvelynJefferson&apos;,&apos;E9&apos;),(&apos;EvelynJefferson&apos;,&apos;E8&apos;),(&apos;EvelynJefferson&apos;,&apos;E5&apos;),(&apos;EvelynJefferson&apos;,&apos;E4&apos;),(&apos;EvelynJefferson&apos;,&apos;E6&apos;),(&apos;EvelynJefferson&apos;,&apos;E1&apos;),(&apos;EvelynJefferson&apos;,&apos;E3&apos;),(&apos;EvelynJefferson&apos;,&apos;E2&apos;),(&apos;RuthDeSand&apos;,&apos;E5&apos;),(&apos;RuthDeSand&apos;,&apos;E7&apos;),(&apos;RuthDeSand&apos;,&apos;E9&apos;),(&apos;RuthDeSand&apos;,&apos;E8&apos;),(&apos;HelenLloyd&apos;,&apos;E11&apos;),(&apos;HelenLloyd&apos;,&apos;E7&apos;),(&apos;HelenLloyd&apos;,&apos;E8&apos;),(&apos;OliviaCarleton&apos;,&apos;E11&apos;),(&apos;OliviaCarleton&apos;,&apos;E9&apos;),(&apos;EleanorNye&apos;,&apos;E5&apos;),(&apos;EleanorNye&apos;,&apos;E7&apos;),(&apos;EleanorNye&apos;,&apos;E6&apos;),(&apos;EleanorNye&apos;,&apos;E8&apos;),(&apos;E9&apos;,&apos;TheresaAnderson&apos;),(&apos;E9&apos;,&apos;PearlOglethorpe&apos;),(&apos;E9&apos;,&apos;KatherinaRogers&apos;),(&apos;E9&apos;,&apos;SylviaAvondale&apos;),(&apos;E9&apos;,&apos;MyraLiddel&apos;),(&apos;E8&apos;,&apos;TheresaAnderson&apos;),(&apos;E8&apos;,&apos;PearlOglethorpe&apos;),(&apos;E8&apos;,&apos;KatherinaRogers&apos;),(&apos;E8&apos;,&apos;SylviaAvondale&apos;),(&apos;E8&apos;,&apos;BrendaRogers&apos;),(&apos;E8&apos;,&apos;LauraMandeville&apos;),(&apos;E8&apos;,&apos;MyraLiddel&apos;),(&apos;E5&apos;,&apos;TheresaAnderson&apos;),(&apos;E5&apos;,&apos;BrendaRogers&apos;),(&apos;E5&apos;,&apos;LauraMandeville&apos;),(&apos;E5&apos;,&apos;CharlotteMcDowd&apos;),(&apos;E4&apos;,&apos;CharlotteMcDowd&apos;),(&apos;E4&apos;,&apos;TheresaAnderson&apos;),(&apos;E4&apos;,&apos;BrendaRogers&apos;),(&apos;E7&apos;,&apos;TheresaAnderson&apos;),(&apos;E7&apos;,&apos;SylviaAvondale&apos;),(&apos;E7&apos;,&apos;BrendaRogers&apos;),(&apos;E7&apos;,&apos;LauraMandeville&apos;),(&apos;E7&apos;,&apos;CharlotteMcDowd&apos;),(&apos;E6&apos;,&apos;TheresaAnderson&apos;),(&apos;E6&apos;,&apos;PearlOglethorpe&apos;),(&apos;E6&apos;,&apos;BrendaRogers&apos;),(&apos;E6&apos;,&apos;LauraMandeville&apos;),(&apos;E1&apos;,&apos;LauraMandeville&apos;),(&apos;E1&apos;,&apos;BrendaRogers&apos;),(&apos;E3&apos;,&apos;TheresaAnderson&apos;),(&apos;E3&apos;,&apos;BrendaRogers&apos;),(&apos;E3&apos;,&apos;LauraMandeville&apos;),(&apos;E3&apos;,&apos;CharlotteMcDowd&apos;),(&apos;E3&apos;,&apos;flag&#123;&apos;),(&apos;E2&apos;,&apos;LauraMandeville&apos;),(&apos;E2&apos;,&apos;TheresaAnderson&apos;),(&apos;KatherinaRogers&apos;,&apos;E13&apos;),(&apos;E13&apos;,&apos;SylviaAvondale&apos;)]</span><br><span class="line"></span><br><span class="line">#你能在让最少人知道的情况下，帮助flag先生联系上75D小姐姐吗？</span><br><span class="line">#求节点“flag&#123;”到“75D”的最短路径，即为flag，比如：flag&#123;E3AliceBobXXXXXXXXXXXXXXXX75D&#125;</span><br></pre></td></tr></table></figure>
+<p>真的就是最短的路，找出最短的路就好了，可以建图，也可以直接从两边找，挺简单，给的数据中很多无效数据。<br>最后得到flag是</p>
+<p><code>E3EvelynJeffersonE9FloraPrice75D</code></p>
 
       
 
@@ -291,7 +269,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://nodeforces.com/2018/08/27/python为什么慢/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://nodeforces.com/2019/04/07/西湖论剑wp/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -305,18 +283,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/28/sort/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          快速排序简析
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/08/12/JB激活/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Jetbrain系列开发IDE的破解方法</div>
+    <a href="/2018/12/29/评教/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">新版教务处一键评教脚本(防约谈版)</div>
       <i class="icon-circle-right"></i>
     </a>
   
