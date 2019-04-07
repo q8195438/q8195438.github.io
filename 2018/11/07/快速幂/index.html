@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="当然是快速幂啦快速幂的目的就是做到快速求幂，假设我们要求a^b,按照朴素算法就是把a连乘b次，这样一来时间复杂度是O(b)也即是O(n)级别，快速幂能做到O(logn)，快了好多好多。它的原理如下：">
+  <meta name="description" content="当然是快速幂啦快速幂的目的就是做到快速求幂，假设我们要求a^b,按照朴素算法就是把a连乘b次，这样一来时间复杂度是O(b)也即是O(n)级别，快速幂能做到O(logn)，快了好多好多。它的原理如下： 　　假设我们要求a^b，那么其实b是可以拆成二进制的，该二进制数第i位的权为2^(i-1)，例如当b==11时">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快速幂算法简析">
 <meta property="og:url" content="http://nodeforces.com/2018/11/07/快速幂/index.html">
 <meta property="og:site_name" content="Syl4s_Blog">
-<meta property="og:description" content="当然是快速幂啦快速幂的目的就是做到快速求幂，假设我们要求a^b,按照朴素算法就是把a连乘b次，这样一来时间复杂度是O(b)也即是O(n)级别，快速幂能做到O(logn)，快了好多好多。它的原理如下：">
+<meta property="og:description" content="当然是快速幂啦快速幂的目的就是做到快速求幂，假设我们要求a^b,按照朴素算法就是把a连乘b次，这样一来时间复杂度是O(b)也即是O(n)级别，快速幂能做到O(logn)，快了好多好多。它的原理如下： 　　假设我们要求a^b，那么其实b是可以拆成二进制的，该二进制数第i位的权为2^(i-1)，例如当b==11时">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-14T17:11:28.330Z">
+<meta property="og:updated_time" content="2019-04-07T16:13:51.418Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速幂算法简析">
-<meta name="twitter:description" content="当然是快速幂啦快速幂的目的就是做到快速求幂，假设我们要求a^b,按照朴素算法就是把a连乘b次，这样一来时间复杂度是O(b)也即是O(n)级别，快速幂能做到O(logn)，快了好多好多。它的原理如下：">
+<meta name="twitter:description" content="当然是快速幂啦快速幂的目的就是做到快速求幂，假设我们要求a^b,按照朴素算法就是把a连乘b次，这样一来时间复杂度是O(b)也即是O(n)级别，快速幂能做到O(logn)，快了好多好多。它的原理如下： 　　假设我们要求a^b，那么其实b是可以拆成二进制的，该二进制数第i位的权为2^(i-1)，例如当b==11时">
 
 
 
@@ -353,7 +353,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-15 01:11:28" itemprop="dateModified" datetime="2018-11-15T01:11:28+08:00">2018-11-15</time>
+                <time title="修改时间：2019-04-08 00:13:51" itemprop="dateModified" datetime="2019-04-08T00:13:51+08:00">2019-04-08</time>
               
             
           </span>
@@ -388,9 +388,7 @@
 
       
         <h3 id="当然是快速幂啦"><a href="#当然是快速幂啦" class="headerlink" title="当然是快速幂啦"></a>当然是快速幂啦</h3><p>快速幂的目的就是做到快速求幂，假设我们要求a^b,按照朴素算法就是把a连乘b次，这样一来时间复杂度是O(b)也即是O(n)级别，快速幂能做到O(logn)，快了好多好多。它的原理如下：</p>
-<a id="more"></a>
-<p>　　假设我们要求a^b，那么其实b是可以拆成二进制的，该二进制数第i位的权为2^(i-1)，例如当b==11时 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a^11=a^(2^0+2^1+2^3)</span><br></pre></td></tr></table></figure>
+<p>　　假设我们要求a^b，那么其实b是可以拆成二进制的，该二进制数第i位的权为2^(i-1)，例如当b==11时<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a^11=a^(2^0+2^1+2^3)</span><br></pre></td></tr></table></figure></p>
 <p>11的二进制是1011</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11 = 2³×1 + 2²×0 + 2¹×1 + 2º×1</span><br></pre></td></tr></table></figure>
 <p>因此，我们将a¹¹转化为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a^11 = a^(2^0)* a^(2^1)* a^(2^3)</span><br></pre></td></tr></table></figure></p>

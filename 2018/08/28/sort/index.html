@@ -96,13 +96,13 @@
 
 
 
-  <meta name="description" content="高快省的排序算法有没有既不浪费空间又可以快一点的排序算法呢？那就是“快速排序”啦！光听这个名字是不是就觉得很高端呢。">
+  <meta name="description" content="高快省的排序算法有没有既不浪费空间又可以快一点的排序算法呢？那就是“快速排序”啦！光听这个名字是不是就觉得很高端呢。 假设我们现在对“6  1  2 7  9  3  4  5 10  8”这个10个数进行排序。首先在这个序列中随便找一个数作为基准数（不要被这个名词吓到了，就是一个用来参照的数，待会你就知道它用来做啥的了）。为了方便，就让第一个数6作为基准数吧。接下来，需要将这个序列中所有比基准数">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快速排序简析">
 <meta property="og:url" content="http://nodeforces.com/2018/08/28/sort/index.html">
 <meta property="og:site_name" content="Syl4s_Blog">
-<meta property="og:description" content="高快省的排序算法有没有既不浪费空间又可以快一点的排序算法呢？那就是“快速排序”啦！光听这个名字是不是就觉得很高端呢。">
+<meta property="og:description" content="高快省的排序算法有没有既不浪费空间又可以快一点的排序算法呢？那就是“快速排序”啦！光听这个名字是不是就觉得很高端呢。 假设我们现在对“6  1  2 7  9  3  4  5 10  8”这个10个数进行排序。首先在这个序列中随便找一个数作为基准数（不要被这个名词吓到了，就是一个用来参照的数，待会你就知道它用来做啥的了）。为了方便，就让第一个数6作为基准数吧。接下来，需要将这个序列中所有比基准数">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://tao.nodeforces.com/sort/1.jpg">
 <meta property="og:image" content="http://tao.nodeforces.com/sort/2.jpg">
@@ -113,10 +113,10 @@
 <meta property="og:image" content="http://tao.nodeforces.com/sort/7.jpg">
 <meta property="og:image" content="http://tao.nodeforces.com/sort/8.jpg">
 <meta property="og:image" content="http://tao.nodeforces.com/sort/9.jpg">
-<meta property="og:updated_time" content="2018-09-28T02:54:28.509Z">
+<meta property="og:updated_time" content="2019-04-07T16:13:43.785Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速排序简析">
-<meta name="twitter:description" content="高快省的排序算法有没有既不浪费空间又可以快一点的排序算法呢？那就是“快速排序”啦！光听这个名字是不是就觉得很高端呢。">
+<meta name="twitter:description" content="高快省的排序算法有没有既不浪费空间又可以快一点的排序算法呢？那就是“快速排序”啦！光听这个名字是不是就觉得很高端呢。 假设我们现在对“6  1  2 7  9  3  4  5 10  8”这个10个数进行排序。首先在这个序列中随便找一个数作为基准数（不要被这个名词吓到了，就是一个用来参照的数，待会你就知道它用来做啥的了）。为了方便，就让第一个数6作为基准数吧。接下来，需要将这个序列中所有比基准数">
 <meta name="twitter:image" content="http://tao.nodeforces.com/sort/1.jpg">
 
 
@@ -363,7 +363,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-28 10:54:28" itemprop="dateModified" datetime="2018-09-28T10:54:28+08:00">2018-09-28</time>
+                <time title="修改时间：2019-04-08 00:13:43" itemprop="dateModified" datetime="2019-04-08T00:13:43+08:00">2019-04-08</time>
               
             
           </span>
@@ -398,9 +398,7 @@
 
       
         <h4 id="高快省的排序算法"><a href="#高快省的排序算法" class="headerlink" title="高快省的排序算法"></a><strong>高快省的排序算法</strong></h4><p>有没有既不浪费空间又可以快一点的排序算法呢？那就是“快速排序”啦！光听这个名字是不是就觉得很高端呢。</p>
-<a id="more"></a>
-<p>假设我们现在对“6  1  2 7  9  3  4  5 10  8”这个10个数进行排序。首先在这个序列中随便找一个数作为<strong>基准数</strong>（不要被这个名词吓到了，就是一个用来参照的数，待会你就知道它用来做啥的了）。为了方便，就让第一个数6作为基准数吧。接下来，需要将这个序列中所有比基准数大的数放在6的右边，比基准数小的数放在6的左边，类似下面这种排列：</p>
-<p>3  1  2 5  4  <strong>6</strong>  9 7  10  8</p>
+<p>假设我们现在对“6  1  2 7  9  3  4  5 10  8”这个10个数进行排序。首先在这个序列中随便找一个数作为<strong>基准数</strong>（不要被这个名词吓到了，就是一个用来参照的数，待会你就知道它用来做啥的了）。为了方便，就让第一个数6作为基准数吧。接下来，需要将这个序列中所有比基准数大的数放在6的右边，比基准数小的数放在6的左边，类似下面这种排列：<br><a id="more"></a><br>3  1  2 5  4  <strong>6</strong>  9 7  10  8</p>
 <p>在初始状态下，数字6在序列的第1位。我们的目标是将6挪到序列中间的某个位置，假设这个位置是k。现在就需要寻找这个k，并且以第k位为分界点，左边的数都小于等于6，右边的数都大于等于6。想一想，你有办法可以做到这点吗？</p>
 <h4 id="排序算法显神威"><a href="#排序算法显神威" class="headerlink" title="排序算法显神威"></a><strong>排序算法显神威</strong></h4><p>方法其实很简单：分别从初始序列“6  1  2 7  9  3  4  5 10  8”两端开始“探测”。先从<strong>右</strong>往<strong>左</strong>找一个小于6的数，再从<strong>左</strong>往<strong>右</strong>找一个大于6的数，然后交换他们。这里可以用两个变量i和j，分别指向序列最左边和最右边。我们为这两个变量起个好听的名字“哨兵i”和“哨兵j”。刚开始的时候让哨兵i指向序列的最左边（即i=1），指向数字6。让哨兵j指向序列的最右边（即=10），指向数字。</p>
 <p><img src="http://tao.nodeforces.com/sort/1.jpg" alt="alt text"></p>
